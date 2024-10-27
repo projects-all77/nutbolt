@@ -167,7 +167,8 @@ document.ontouchstart = evt => birthday.onClick(evt)
 
 </script>
 
-<h1>Happy Birthday Kavs, Love you lots... </h1>
+<h1>Happy Birthday Kavs, <a href="love">&hearts;</a> Love you...
+</h1>
 <canvas id="birthday"></canvas>
 
 
