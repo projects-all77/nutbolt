@@ -1,194 +1,63 @@
 <script>
-	import { onMount } from "svelte";
-
-
-onMount(() => {
-    // helper functions
-    const PI2 = Math.PI * 2
-const random = (min, max) => Math.random() * (max - min + 1) + min | 0
-const timestamp = _ => new Date().getTime()
-
-// container
-class Birthday {
-  constructor() {
-    this.resize()
-
-    // create a lovely place to store the firework
-    this.fireworks = []
-    this.counter = 0
-
-  }
-  
-  resize() {
-    this.width = canvas.width = window.innerWidth
-    let center = this.width / 2 | 0
-    this.spawnA = center - center / 4 | 0
-    this.spawnB = center + center / 4 | 0
-    
-    this.height = canvas.height = window.innerHeight
-    this.spawnC = this.height * .1
-    this.spawnD = this.height * .5
-    
-  }
-  
-  onClick(evt) {
-     let x = evt.clientX || evt.touches && evt.touches[0].pageX
-     let y = evt.clientY || evt.touches && evt.touches[0].pageY
-     
-     let count = random(3,5)
-     for(let i = 0; i < count; i++) this.fireworks.push(new Firework(
-        random(this.spawnA, this.spawnB),
-        this.height,
-        x,
-        y,
-        random(0, 260),
-        random(30, 110)))
-          
-     this.counter = -1
-     
-  }
-  
-  update(delta) {
-    ctx.globalCompositeOperation = 'hard-light'
-    ctx.fillStyle = `rgba(20,20,20,${ 7 * delta })`
-    ctx.fillRect(0, 0, this.width, this.height)
-
-    ctx.globalCompositeOperation = 'lighter'
-    for (let firework of this.fireworks) firework.update(delta)
-
-    // if enough time passed... create new new firework
-    this.counter += delta * 3 // each second
-    if (this.counter >= 1) {
-      this.fireworks.push(new Firework(
-        random(this.spawnA, this.spawnB),
-        this.height,
-        random(0, this.width),
-        random(this.spawnC, this.spawnD),
-        random(0, 360),
-        random(30, 110)))
-      this.counter = 0
-    }
-
-    // remove the dead fireworks
-    if (this.fireworks.length > 1000) this.fireworks = this.fireworks.filter(firework => !firework.dead)
-
-  }
-}
-
-class Firework {
-  constructor(x, y, targetX, targetY, shade, offsprings) {
-    this.dead = false
-    this.offsprings = offsprings
-
-    this.x = x
-    this.y = y
-    this.targetX = targetX
-    this.targetY = targetY
-
-    this.shade = shade
-    this.history = []
-  }
-  update(delta) {
-    if (this.dead) return
-
-    let xDiff = this.targetX - this.x
-    let yDiff = this.targetY - this.y
-    if (Math.abs(xDiff) > 3 || Math.abs(yDiff) > 3) { // is still moving
-      this.x += xDiff * 2 * delta
-      this.y += yDiff * 2 * delta
-
-      this.history.push({
-        x: this.x,
-        y: this.y
-      })
-
-      if (this.history.length > 20) this.history.shift()
-
-    } else {
-      if (this.offsprings && !this.madeChilds) {
-        
-        let babies = this.offsprings / 2
-        for (let i = 0; i < babies; i++) {
-          let targetX = this.x + this.offsprings * Math.cos(PI2 * i / babies) | 0
-          let targetY = this.y + this.offsprings * Math.sin(PI2 * i / babies) | 0
-
-          birthday.fireworks.push(new Firework(this.x, this.y, targetX, targetY, this.shade, 0))
-
-        }
-
-      }
-      this.madeChilds = true
-      this.history.shift()
-    }
-    
-    if (this.history.length === 0) this.dead = true
-    else if (this.offsprings) { 
-        for (let i = 0; this.history.length > i; i++) {
-          let point = this.history[i]
-          ctx.beginPath()
-          ctx.fillStyle = 'hsl(' + this.shade + ',100%,' + i + '%)'
-          ctx.arc(point.x, point.y, 1, 0, PI2, false)
-          ctx.fill()
-        } 
-      } else {
-      ctx.beginPath()
-      ctx.fillStyle = 'hsl(' + this.shade + ',100%,50%)'
-      ctx.arc(this.x, this.y, 1, 0, PI2, false)
-      ctx.fill()
-    }
-
-  }
-}
-
-let canvas = document.getElementById('birthday')
-let ctx = canvas.getContext('2d')
-
-let then = timestamp()
-
-let birthday = new Birthday
-
-    window.onresize = () => birthday.resize()
-document.onclick = evt => birthday.onClick(evt)
-document.ontouchstart = evt => birthday.onClick(evt)
-
-  ;(function loop(){
-  	requestAnimationFrame(loop)
-
-  	let now = timestamp()
-  	let delta = now - then
-
-    then = now
-    birthday.update(delta / 1000)
-  	
-
-  })()
-})
-
-
+	import Features from '$lib/components/layout/features.svelte';
+import Button from '$lib/components/ui/button/button.svelte';
 </script>
 
-<h1>Happy Birthday Kavs, <a href="love">&hearts;</a> Love you...
-</h1>
-<canvas id="birthday"></canvas>
+<main class="grid place-items-center pb-8 pt-16 md:pb-24 md:pt-12 lg:grid-cols-2">
+	<div class="hidden py-6 md:order-1 md:block"></div>
+	<div>
+		<h1 class="text-5xl font-bold lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter">
+			Cyber Info and security
+		</h1>
+		<p class="mt-4 max-w-xl text-lg text-slate-600">
+			Nutbolt is a starter for someone who want to understand cybersecurity.<wbr /> Let us know
+			if you want a help in cybersecurity front. We have lots of tools and solution for you.
+		</p>
+		<div class="mt-6 flex flex-col gap-3 sm:flex-row">
+			<Button
+				href="/blog"
+				target="_blank"
+				class="flex items-center justify-center gap-1"
+				rel="noopener"
+			>
+				Blogs
+			</Button>
+			<Button
+				style="outline"
+				rel="noopener"
+				href="/about"
+				class="flex items-center justify-center gap-1"
+				target="_blank"
+			>
+				About
+			</Button>
+		</div>
+	</div>
+</main>
+
+<Features></Features>
 
 
-<style>
-    body {
-  margin: 0;
-  background: #020202;
-  cursor: crosshair;
-}
-canvas{display:block}
-h1 {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-family: "Source Sans Pro";
-  font-size: 5em;
-  font-weight: 900;
-  -webkit-user-select: none;
-  user-select: none;
-}
-</style>
+<div class="mt-24">
+  <h2 class="text-center text-slate-500">Works with your technologies</h2>
+  <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
+
+Icons
+ICONS
+  </div>
+</div>
+
+
+<div
+  class="bg-black p-8 md:px-20 md:py-20 mt-20 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center">
+  <h2 class="text-white text-4xl md:text-6xl tracking-tight">
+    Build faster websites.
+  </h2>
+  <p class="text-slate-400 mt-4 text-lg md:text-xl">
+    Pull content from anywhere and serve it fast with Astro's next-gen island
+    architecture.
+  </p>
+  <div class="flex mt-5">
+    <Button href="#" style="inverted">Get Started</Button>
+  </div>
+</div>
