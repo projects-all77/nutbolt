@@ -1,58 +1,61 @@
-# create-svelte
+# Notion-like Editor with SvelteKit
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Features
+- Drag and drop blocks
+- Add/delete blocks
+- Rich text editing
+- Minimal Notion-like interface
+- TypeScript support
+- SvelteKit project structure
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## Prerequisites
+- Node.js (v18+ recommended)
+- npm or pnpm
 
-## Creating a project
+## Setup Instructions
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-If you're seeing this, you've probably already done this step. Congrats!
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-```bash
-# create a new project in the current directory
-npx sv create
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Project Structure
+- `src/routes/+page.svelte`: Main editor page
+- `src/lib/BlockEditor.svelte`: Individual block editor component
+- `svelte.config.js`: SvelteKit configuration
+- `vite.config.ts`: Vite configuration
 
-## Developing
+## Key Dependencies
+- Svelte
+- SvelteKit
+- Tiptap (for rich text editing)
+- svelte-dnd-action (for drag and drop)
+- uuid (for generating unique block IDs)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## How to Use
+- Click "Add Block" to create new text blocks
+- Drag and drop blocks to reorder them
+- Click the "✕" button to delete a block
+- Start typing in a block to add content
 
-```bash
-npm run dev
+## Limitations & Potential Improvements
+- Currently supports only paragraph blocks
+- No block type switching
+- Basic styling
+- No persistent storage
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Next Steps
+- Add more block types (headings, lists, etc.)
+- Implement local storage or backend persistence
+- Add more advanced Tiptap extensions
+- Improve drag and drop interactions
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
-
-## Building
-
-To build your library:
-
-```bash
-npm run package
-```
-
-To create a production version of your showcase app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```bash
-npm publish
-```
+## License
+MIT License
