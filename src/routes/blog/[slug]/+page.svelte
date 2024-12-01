@@ -1,7 +1,15 @@
+<!-- src/routes/blog/[id]/+page.svelte -->
 <script>
-
-</script>
-
+    export let post;
+  </script>
+  
+  <div>
+    <h1>{post.title}</h1>
+    <img src="{post.image}" alt="{post.title}" style="max-width: 100%; height: auto;" />
+    <p><em>Published on {post.date}</em></p>
+    <p>{post.content}</p>
+  </div>
+  
 <div class="mx-auto max-w-[735px] mt-14">
     <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
       {blog.category}

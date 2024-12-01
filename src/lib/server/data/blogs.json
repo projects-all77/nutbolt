@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "title": "First Blog Post",
+      "content": "This is the content of the first blog post. It’s a bit longer to give more detail on this page.",
+      "date": "2023-11-01",
+      "image": "https://images.unsplash.com/photo-1564866657313-9556e9971c96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+    },
+    {
+      "id": 2,
+      "title": "Second Blog Post",
+      "content": "This is the content of the second blog post. It’s also longer and provides more information.",
+      "date": "2023-11-05",
+      "image": "https://images.unsplash.com/photo-1587502537442-ff0870f04f67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+    }
+]
+  

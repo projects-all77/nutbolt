@@ -1,5 +1,7 @@
 <script>
 	import SectionHead from "$lib/components/layout/section-head.svelte";
+    export let data;
+    console.log(data);
 
 	const publishedBlogEntries = [
 		{
@@ -76,6 +78,10 @@
     
 </SectionHead>
 <main class="mt-16">
+    <div>
+        <h1>Data from JSON File</h1>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      </div>
 	<ul class="mx-auto grid max-w-4xl gap-16">
 		{#each publishedBlogEntries as blogPostEntry}
 			<li>

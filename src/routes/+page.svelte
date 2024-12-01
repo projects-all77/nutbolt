@@ -7,21 +7,20 @@ import Button from '$lib/components/ui/button/button.svelte';
 	<div class="hidden py-6 md:order-1 md:block"></div>
 	<div>
 		<h1 class="text-5xl font-bold lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter">
-			Cyber Info and security
+			Create your own awesome post.
 		</h1>
 		<p class="mt-4 max-w-xl text-lg text-slate-600">
-			Nutbolt is a starter for someone who want to understand cybersecurity.<wbr /> Let us know
-			if you want a help in cybersecurity front. We have tools and solutions for you to keep your websites secure.
+			Nutbolt is work in progress.
 		</p>
 		<div class="mt-6 flex flex-col gap-3 sm:flex-row">
-			<Button
+			<!-- <Button
 				href="/blog"
 				target="_blank"
 				class="flex items-center justify-center gap-1"
 				rel="noopener"
 			>
 				Blogs
-			</Button>
+			</Button> -->
 			<Button
 				style="outline"
 				rel="noopener"
@@ -29,7 +28,7 @@ import Button from '$lib/components/ui/button/button.svelte';
 				class="flex items-center justify-center gap-1"
 				target="_blank"
 			>
-				About
+				Contact
 			</Button>
 		</div>
 	</div>
@@ -48,7 +47,7 @@ ICONS
 </div> -->
 
 
-<div
+<!-- <div
   class="bg-black p-8 md:px-20 md:py-20 mt-20 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center">
   <h2 class="text-white text-4xl md:text-6xl tracking-tight">
     Scan your websites.
@@ -59,6 +58,6 @@ ICONS
   <div class="flex mt-5">
     <Button href="/security-scan" style="inverted">Get Started</Button>
   </div>
-</div>
+</div> -->
 </Container>
 
