@@ -10,7 +10,7 @@ import Button from '$lib/components/ui/button/button.svelte';
 			Create your own awesome post.
 		</h1>
 		<p class="mt-4 max-w-xl text-lg text-slate-600">
-			Nutbolt is work in progress. Currenty anything created here will be deleted by the admin.
+			Notabene is work in progress. Currenty anything created here will be deleted by the admin.
 			You can find more information <a href="/about">here</a>.
 		</p>
 		<div class="mt-6 flex flex-col gap-3 sm:flex-row">

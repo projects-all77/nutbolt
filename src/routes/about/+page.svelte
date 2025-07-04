@@ -1,4 +1,3 @@
-
 <script>
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { onMount } from "svelte";
@@ -56,7 +55,7 @@
     onMount(() => {
         initWebForm();
     })
-    </script>
+</script>
 
 <!-- To make this contact form work, create your free access key from https://web3forms.com/
      Then you will get all form submissions in your email inbox. -->
